@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login : AETHX-HUB 🍂</title>
+  <style>
+    :root{
+      --bg:#0b0f19;/* deep slate */
+      --card:#121826;
+      --ink:#e5e7eb;
+      --muted:#94a3b8;
+      --accent:#6366f1; /* indigo */
+      --danger:#ef4444;
+      --ok:#22c55e;
+      --ring:rgba(99,102,241,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;display:grid;place-items:center;background:radial-gradient( 1200px 600px at 70% -20%,rgba(99,102,241,.25),transparent 60%),
+      radial-gradient(1000px 800px at -10% 110%, rgba(34,197,94,.15), transparent 60%), var(--bg);
+      color:var(--ink);font:500 16px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial;
+    }
+    .wrap{width:min(96%, 420px)}
+    .brand{display:flex;gap:.6rem;align-items:center;justify-content:center;margin-bottom:1.25rem;color:var(--muted)}
+    .brand svg{width:28px;height:28px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.06), transparent 40%) border-box;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:20px; padding:22px 22px 20px; backdrop-filter: blur(6px); box-shadow: 0 10px 40px rgba(0,0,0,.35)}
+    h1{margin:.25rem 0 1rem;font-weight:700;letter-spacing:.2px;font-size:1.35rem}
+    p.sub{margin:.25rem 0 1.25rem;color:var(--muted);font-size:.95rem}
+
+    form{display:grid;gap:14px}
+    .field{display:grid;gap:6px}
+    label{font-size:.9rem;color:var(--muted)}
+    .control{position:relative}
+    input{
+      width:100%;border:1px solid rgba(255,255,255,.12);background:rgba(17,24,39,.55);color:var(--ink);
+      padding:12px 14px;border-radius:12px;outline:none;transition:box-shadow .2s, border-color .2s, background .2s;
+    }
+    input::placeholder{color:rgba(229,231,235,.5)}
+    input:focus{border-color:var(--accent);box-shadow:0 0 0 6px var(--ring)}
+
+    .toggle-eye{position:absolute;right:10px;top:50%;translate:0 -50%;border:0;background:transparent;color:var(--muted);cursor:pointer}
+
+    .row{display:flex;justify-content:space-between;align-items:center}
+    .actions{display:flex;align-items:center;gap:10px}
+    .btn-secondary{background:transparent;border:1px solid rgba(255,255,255,.22);color:var(--ink);box-shadow:none}
+    .btn-secondary:hover{border-color:rgba(255,255,255,.35);}
+    .checkbox{display:flex;align-items:center;gap:.5rem;color:var(--muted);font-size:.9rem}
+    .checkbox input{width:16px;height:16px;margin:0}
+
+    .btn{display:inline-grid;place-items:center;border:0;border-radius:12px;padding:12px 14px;font-weight:700;cursor:pointer;
+      background:linear-gradient(180deg, #7c83ff, #5e63ff); color:white; box-shadow:0 10px 20px rgba(99,102,241,.35)}
+    .btn:active{transform:translateY(1px)}
+    .btn[disabled]{opacity:.7;cursor:not-allowed}
+
+    .alert{display:none;margin-top:6px;font-size:.9rem;color:var(--danger)}
+    .alert.show{display:block;animation:pop .2s ease}
+
+    @keyframes shake{10%,90%{transform:translateX(-1px)}20%,80%{transform:translateX(2px)}30%,50%,70%{transform:translateX(-4px)}40%,60%{transform:translateX(4px)}}
+    .shake{animation:shake .45s}
+    @keyframes pop{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+
+    footer{margin-top:14px;color:var(--muted);font-size:.8rem;text-align:center}
+    code{background:rgba(148,163,184,.15);padding:.15rem .35rem;border-radius:6px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M12 3l7 4v10l-7 4-7-4V7l7-4z" stroke="currentColor" stroke-width="1.5"/>
+        <circle cx="12" cy="12" r="2" fill="currentColor"/>
+      </svg>
+      <span>🍂AETHX-HUB LOGIN</span>
+    </div>
+
+    <div id="card" class="card">
+      <h1>Login dulu guys!</h1>
+      <p class="sub">Silahkan masukan data anda disini</p>
+
+      <form id="loginForm" autocomplete="off" novalidate>
+        <div class="field">
+          <label for="username">Username</label>
+          <div class="control">
+            <input id="username" name="username" type="text" placeholder="Username" required autofocus />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="control">
+            <input id="password" name="password" type="password" placeholder="••••••••" required />
+            <button class="toggle-eye" type="button" aria-label="Toggle password" title="Lihat/Sembunyikan">👁</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <label class="checkbox"><input id="remember" type="checkbox"/> Remember me</label>
+          <div class="actions">
+            <button id="registerBtn" class="btn btn-secondary" type="button">Register</button>
+            <button id="submitBtn" class="btn" type="submit">Login</button>
+          </div>
+        </div>
+        <div id="alert" class="alert" role="alert">Username atau password salah. Coba lagi.</div>
+      </form>
+    </div>
+
+    <footer>
+      <span>Created by <strong>darkd3mand- as Rahmatt 🐢</strong></span>
+      <span>Copyright ©️ 2025 AETHYRNOX</span>
+    </footer>
+  </div>
+
+  <script>
+    (function(){
+      // ===== Config kredensial demo (bisa 3+ item) =====
+      const CREDENTIALS = [
+        { u: 'Admin', p: 'freeforall24' },
+        
+        // Tambahkan pasangan usdrname/password lain di bawah ini:
+        // { u: 'Admin2', p: 'secret2' },
+        // { u: 'UserX',  p: 'passX' },
+      ];
+
+      const form = document.getElementById('loginForm');
+      const user = document.getElementById('username');
+      const pass = document.getElementById('password');
+      const alertBox = document.getElementById('alert');
+      const card = document.getElementById('card');
+      const toggleEye = document.querySelector('.toggle-eye');
+      const remember = document.getElementById('remember');
+      const registerBtn = document.getElementById('registerBtn');
+
+      // Persist last username optionally
+      const savedUser = localStorage.getItem('demo_username');
+      if(savedUser){ user.value = savedUser; }
+
+      toggleEye.addEventListener('click', ()=>{
+        pass.type = pass.type === 'password' ? 'text' : 'password';
+      });
+
+      // Register button: popup + redirect to Discord invite
+      registerBtn.addEventListener('click', ()=>{
+        alert('Silahkan Hubungi admin untuk register akun.');
+        window.open('https://discord.gg/MdGyBnQHZs', '_blank', 'noopener');
+      });
+
+      form.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        alertBox.classList.remove('show');
+        card.classList.remove('shake');
+
+        const u = (user.value || '').trim();
+        const p = pass.value || '';
+
+        const ok = CREDENTIALS.some(c => c.u === u && c.p === p);
+        if(ok){
+          // ===== SUCCESS PATH =====
+          if(remember.checked) {
+            localStorage.setItem('demo_username', u);
+          } else {
+            localStorage.removeItem('demo_username');
+          }
+          // Mark auth (demo only)
+          sessionStorage.setItem('isAuthenticated', 'true');
+          // Redirect sesuai requirement
+          window.location.href = 'pro1.html';
+        } else {
+          // ===== FAILURE PATH =====
+          pass.value = '';
+          alertBox.classList.add('show');
+          // little shake for feedback
+          void card.offsetWidth; // reflow to restart animation
+          card.classList.add('shake');
+          user.focus();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
