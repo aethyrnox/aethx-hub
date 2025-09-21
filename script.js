@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   dashboardBtn?.addEventListener('click', () => {
     // Ganti target kalau perlu
-    window.location.href = 'dashboard.html';
+    window.location.href = 'pro1.html';
   });
 
   // Prevent default for demo links that are '#'
