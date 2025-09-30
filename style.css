@@ -37,13 +37,6 @@ body{
   background:linear-gradient(180deg,rgba(255,255,255,.06),transparent 40%);
   transition:transform .15s ease, border-color .15s ease;
 }
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    margin: 2rem 0;
-    flex-wrap: wrap;
   
 .item:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.2)}
 .item:focus-visible{outline:none;box-shadow:0 0 0 6px var(--ring)}
